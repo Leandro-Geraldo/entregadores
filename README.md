@@ -7,7 +7,7 @@
 - PostgreSQL
   - Database: entregadores
   - Username: postgres
-  - Password: postgres
+  - Password: 85245600le
 
 # Instalação
 - Clone este projeto
