@@ -24,14 +24,14 @@ public class EntregadoresController {
         return ResponseEntity.status(HttpStatus.OK).body(entregadorList);
     }
 
-    @PostMapping("/entregadores")
+    @PostMapping("/entregador")
     public ResponseEntity<EntregadorModel> salvar(@RequestBody @Valid EntregadorDto entregadorDto){
         var entregadorModel = new EntregadorModel();
         BeanUtils.copyProperties(entregadorDto, entregadorModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(entregadorRepository.save(entregadorModel));
     }
 
-    @GetMapping("/entregadores/{id}")
+    @GetMapping("/entregador/{id}")
     public ResponseEntity<Object> detalhar(@PathVariable(value = "id")Integer id){
         Optional<EntregadorModel> entregador = entregadorRepository.findById(id);
         if(entregador.isEmpty()){
@@ -40,7 +40,7 @@ public class EntregadoresController {
         return ResponseEntity.status(HttpStatus.OK).body(entregador.get());
     }
 
-    @PutMapping("/entregadores/{id}")
+    @PutMapping("/entregador/{id}")
     public ResponseEntity<Object> atualizarEntregador(@PathVariable(value = "id") Integer id,
                                                       @RequestBody @Valid EntregadorDto entregadorDto){
         Optional<EntregadorModel> entregador = entregadorRepository.findById(id);
@@ -51,7 +51,7 @@ public class EntregadoresController {
         BeanUtils.copyProperties(entregadorDto, entregadorModel);
         return ResponseEntity.status(HttpStatus.OK).body(entregadorRepository.save(entregadorModel));
     }
-    @DeleteMapping("/entregadores/{id}")
+    @DeleteMapping("/entregador/{id}")
     public ResponseEntity<Object> deletarEntregador(@PathVariable(value = "id") Integer id){
         Optional<EntregadorModel> entregador = entregadorRepository.findById(id);
         if (entregador.isEmpty()){
